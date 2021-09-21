@@ -6,8 +6,9 @@ import "./Expenses.css";
 const Expenses = (props) => {
   return (
     <Card className="expenses">
-      {props.expenses.map((expense) => (
+      {props.expenses.map((expense, index) => (
         <ExpenseItem
+          key={index}
           title={expense.title}
           amount={expense.amount}
           date={expense.date}

@@ -18,14 +18,18 @@ const Expenses = (props) => {
           selected={selectedYear}
           yearPicked={pickedYearHandler}
         />
-        {props.expenses.map((expense, index) => (
-          <ExpenseItem
-            key={index}
-            title={expense.title}
-            amount={expense.amount}
-            date={expense.date}
-          ></ExpenseItem>
-        ))}
+        {props.expenses
+          .filter((expense) => {
+            return expense.date.getFullYear().toString() === selectedYear;
+          })
+          .map((expense) => (
+            <ExpenseItem
+              key={expense.id}
+              title={expense.title}
+              amount={expense.amount}
+              date={expense.date}
+            ></ExpenseItem>
+          ))}
       </Card>
     </div>
   );
